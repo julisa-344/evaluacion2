@@ -22,7 +22,7 @@ namespace pe.com.evaluacion2.bo
         public bool estado { get; set; }
         public DistritoBO distrito { get; set; }
         public RolBO rol { get; set; }
-        public TipoDocumentoBO TipoDocumento { get; set; }
+        public TipoDocumentoBO tipoDocumento { get; set; }
 
     }
 }

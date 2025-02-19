@@ -11,7 +11,10 @@ namespace pe.com.evaluacion2.bal
 {
     public class EmpleadoBAL
     {
-        EmpleadoDAL dal = new EmpleadoDAL();
+        private EmpleadoDAL dal = new EmpleadoDAL();
+        private DistritoBAL distritoBAL = new DistritoBAL(); // Instancia de DistritoBAL
+        private TipoDocumentoBAL tipoDocumentoBAL = new TipoDocumentoBAL(); // Instancia de TipoDocumentoBAL
+        private RolBAL rolBAL = new RolBAL(); // Instancia de RolBAL
 
         public List<EmpleadoBO> MostrarEmpleado()
         {
@@ -23,14 +26,31 @@ namespace pe.com.evaluacion2.bal
             return dal.MostrarEmpleadoTodo();
         }
 
+        public List<DistritoBO> MostrarDistritos()
+        {
+            return distritoBAL.MostrarDistritoTodo(); // Asegúrate de que este método esté implementado
+        }
+
+        public List<TipoDocumentoBO> MostrarTiposDocumento()
+        {
+            return tipoDocumentoBAL.MostrarTipoDocumentoTodo(); // Asegúrate de que este método esté implementado
+        }
+
+        public List<RolBO> MostrarRoles()
+        {
+            return rolBAL.MostrarRolTodo(); // Asegúrate de que este método esté implementado
+        }
+
         public bool RegistrarEmpleado(EmpleadoBO p)
         {
             return dal.RegistrarEmpleado(p);
         }
+
         public bool ActualizarEmpleado(EmpleadoBO p)
         {
             return dal.ActualizarEmpleado(p);
         }
+
         public bool EliminarEmpleado(EmpleadoBO p)
         {
             return dal.EliminarEmpleado(p);
@@ -45,6 +65,5 @@ namespace pe.com.evaluacion2.bal
         {
             return dal.MostrarCodigoEmpleado();
         }
-
     }
 }

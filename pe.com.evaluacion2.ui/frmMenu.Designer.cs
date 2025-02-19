@@ -67,6 +67,7 @@
             btnMarca.TabIndex = 2;
             btnMarca.Text = "Marca";
             btnMarca.UseVisualStyleBackColor = true;
+            btnMarca.Click += btnMarca_Click;
             // 
             // btnTipoDoc
             // 
@@ -76,6 +77,7 @@
             btnTipoDoc.TabIndex = 3;
             btnTipoDoc.Text = "Tipo Doc";
             btnTipoDoc.UseVisualStyleBackColor = true;
+            btnTipoDoc.Click += btnTipoDoc_Click;
             // 
             // btnCliente
             // 
@@ -85,6 +87,7 @@
             btnCliente.TabIndex = 4;
             btnCliente.Text = "Cliente";
             btnCliente.UseVisualStyleBackColor = true;
+            btnCliente.Click += btnCliente_Click;
             // 
             // btnProducto
             // 
@@ -114,6 +117,7 @@
             btnDistrito.TabIndex = 6;
             btnDistrito.Text = "Distrito";
             btnDistrito.UseVisualStyleBackColor = true;
+            btnDistrito.Click += btnDistrito_Click;
             // 
             // btnCategoria
             // 
@@ -123,6 +127,7 @@
             btnCategoria.TabIndex = 5;
             btnCategoria.Text = "Categoria";
             btnCategoria.UseVisualStyleBackColor = true;
+            btnCategoria.Click += btnCategoria_Click;
             // 
             // frmMenu
             // 

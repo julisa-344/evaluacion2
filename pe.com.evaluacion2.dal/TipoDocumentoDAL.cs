@@ -62,9 +62,9 @@ namespace pe.com.evaluacion2.dal
                 while (dr.Read())
                 {
                     TipoDocumentoBO obj = new TipoDocumentoBO();
-                    obj.codigo = Convert.ToInt32(dr["codmar"].ToString());
-                    obj.nombre = dr["nommar"].ToString();
-                    obj.estado = Convert.ToBoolean(dr["estmar"].ToString());
+                    obj.codigo = Convert.ToInt32(dr["codtipd"].ToString());
+                    obj.nombre = dr["nomtipd"].ToString();
+                    obj.estado = Convert.ToBoolean(dr["esttipd"].ToString());
                     tipoDocumentos.Add(obj);
                 }
                 return tipoDocumentos;

@@ -25,7 +25,7 @@ namespace pe.com.evaluacion2.ui
             this.Show(); // Muestra nuevamente el formulario de menú al cerrar el diálogo
         }
 
-        private void btnCategoria_Click_1(object sender, EventArgs e)
+        private void btnCategoria_Click(object sender, EventArgs e)
         {
             this.Hide();
             frmCategoria categoriaForm = new frmCategoria();
@@ -33,7 +33,7 @@ namespace pe.com.evaluacion2.ui
             this.Show();
         }
 
-        private void btnMarca_Click_1(object sender, EventArgs e)
+        private void btnMarca_Click(object sender, EventArgs e)
         {
             this.Hide();
             frmMarca marcaForm = new frmMarca();
@@ -41,7 +41,7 @@ namespace pe.com.evaluacion2.ui
             this.Show();
         }
 
-        private void btnDistrito_Click_1(object sender, EventArgs e)
+        private void btnDistrito_Click(object sender, EventArgs e)
         {
             this.Hide();
             frmDistrito distritoForm = new frmDistrito();
@@ -49,7 +49,7 @@ namespace pe.com.evaluacion2.ui
             this.Show();
         }
 
-        private void btnTipoDoc_Click_1(object sender, EventArgs e)
+        private void btnTipoDoc_Click(object sender, EventArgs e)
         {
             this.Hide();
             frmTipoDocumento tipoDocForm = new frmTipoDocumento();
@@ -65,7 +65,7 @@ namespace pe.com.evaluacion2.ui
             this.Show();
         }
 
-        private void btnCliente_Click_1(object sender, EventArgs e)
+        private void btnCliente_Click(object sender, EventArgs e)
         {
             this.Hide();
             frmCliente clienteForm = new frmCliente();

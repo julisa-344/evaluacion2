@@ -214,5 +214,40 @@ namespace pe.com.evaluacion2.ui
         {
 
         }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvProducto_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //capturando el indice seleccionado
+            indice = e.RowIndex;
+            //verificamos que se haya seleccinado un valor
+            if (indice >= 0)
+            {
+                //desbloqueamos
+                Desbloquear();
+                btnRegistrar.Enabled = false;
+                DataGridViewRow filaseleccinada = dgvProducto.Rows[indice];
+                txtCod.Text = filaseleccinada.Cells["codigo"].Value.ToString();
+                txtNom.Text = filaseleccinada.Cells["nombre"].Value.ToString();
+                txtDes.Text = filaseleccinada.Cells["descripcion"].Value.ToString();
+                if (Convert.ToBoolean(filaseleccinada.Cells["estado"].Value))
+                {
+                    chkEst.Checked = true;
+                }
+                else
+                {
+                    chkEst.Checked = false;
+                }
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

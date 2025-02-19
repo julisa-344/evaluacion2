@@ -11,40 +11,48 @@ namespace pe.com.evaluacion2.bal
 {
     public class ClienteBAL
     {
-        ClienteDAL dal = new ClienteDAL();
-
-        public List<ClienteBO> MostrarCliente()
-        {
-            return dal.MostrarCliente();
-        }
+        private ClienteDAL clienteDAL = new ClienteDAL();
+        private DistritoBAL distritoBAL = new DistritoBAL(); // Instancia de DistritoBAL
+        private TipoDocumentoBAL tipoDocumentoBAL = new TipoDocumentoBAL(); // Instancia de TipoDocumentoBAL
 
         public List<ClienteBO> MostrarClienteTodo()
         {
-            return dal.MostrarClienteTodo();
+            return clienteDAL.MostrarClienteTodo();
         }
 
-        public bool RegistrarCliente(ClienteBO p)
+        public List<DistritoBO> MostrarDistrito()
         {
-            return dal.RegistrarCliente(p);
-        }
-        public bool ActualizarCliente(ClienteBO p)
-        {
-            return dal.ActualizarCliente(p);
-        }
-        public bool EliminarCliente(ClienteBO p)
-        {
-            return dal.EliminarCliente(p);
+            return distritoBAL.MostrarDistritoTodo(); // Asegúrate de que este método esté implementado en DistritoDAL
         }
 
-        public bool HabilitarCliente(ClienteBO p)
+        public List<TipoDocumentoBO> MostrarTipoDocumento()
         {
-            return dal.HabilitarCliente(p);
+            return tipoDocumentoBAL.MostrarTipoDocumentoTodo(); // Asegúrate de que este método esté implementado en TipoDocumentoDAL
+        }
+
+        public bool RegistrarCliente(ClienteBO cliente)
+        {
+            return clienteDAL.RegistrarCliente(cliente);
+        }
+
+        public bool ActualizarCliente(ClienteBO cliente)
+        {
+            return clienteDAL.ActualizarCliente(cliente);
+        }
+
+        public bool EliminarCliente(ClienteBO cliente)
+        {
+            return clienteDAL.EliminarCliente(cliente);
+        }
+
+        public bool HabilitarCliente(ClienteBO cliente)
+        {
+            return clienteDAL.HabilitarCliente(cliente);
         }
 
         public int MostrarCodigoCliente()
         {
-            return dal.MostrarCodigoCliente();
+            return clienteDAL.MostrarCodigoCliente();
         }
-
     }
 }

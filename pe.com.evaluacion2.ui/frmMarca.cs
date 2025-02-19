@@ -139,34 +139,6 @@ namespace pe.com.evaluacion2.ui
             txtCod.ReadOnly = true;
         }
 
-        //private void PersonalizarDataGridView()
-        //{
-        //    //ajustar el tamaño de ls columnas
-        //    dgvMarca.AutoSizeColumnsMode= DataGridViewAutoSizeColumnsMode.AllCells;
-        //    //ajustar el ancho para llenar el Datagridview
-        //    dgvMarca.AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill;
-        //    //evitar que se autogenera las columnas
-        //    dgvMarca.AutoGenerateColumns = false;
-
-        //    //asignando titulos a la columna
-        //    if (dgvMarca.Columns.Contains("codigo")) dgvMarca.Columns["codigo"].HeaderText = "Codigo";
-        //    if (dgvMarca.Columns.Contains("nombre")) dgvMarca.Columns["nombre"].HeaderText = "Nombre";
-        //    if (dgvMarca.Columns.Contains("estado")) dgvMarca.Columns["estado"].HeaderText = "Estado";
-
-        //    //centrar el texto
-        //    foreach(DataGridViewColumn col in dgvMarca.Columns)
-        //    {
-        //        col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //        col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //    }
-
-        //    //eliminamos la seleccion al iniciar
-        //    dgvMarca.ClearSelection();
-
-        //    //hacemos de solo lectura el datagridview
-        //    dgvMarca.ReadOnly = true;
-        //}
-
         private void PersonalizarDataGridView()
         {
             //ajustar el tamaño de ls columnas

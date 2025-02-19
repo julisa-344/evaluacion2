@@ -13,8 +13,11 @@ namespace pe.com.evaluacion2.ui
         // Create objects for BAL and BO
         private ClienteBAL bal = new ClienteBAL();
         private ClienteBO obj = new ClienteBO();
+        private DistritoBAL distritoBAL = new DistritoBAL(); // Instancia de DistritoBAL
+        private TipoDocumentoBAL tipoDocumentoBAL = new TipoDocumentoBAL(); // Instancia de TipoDocumentoBAL
+
         private int cod = 0, indice = -1;
-        private string nom, apeP, apeM, dir, tel, cel, cor, usu, cla;
+        private string nom, apeP, apeM, dir, tel, cel, cor;
         private bool est = false, res = false;
 
         public frmCliente()
@@ -27,7 +30,7 @@ namespace pe.com.evaluacion2.ui
             PersonalizarDataGridView();
         }
 
-        private void btnNuevo_Click_1(object sender, EventArgs e)
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
             Desbloquear();
             btnNuevo.Enabled = false;
@@ -41,12 +44,11 @@ namespace pe.com.evaluacion2.ui
             txtNom.Enabled = false;
             txtApeP.Enabled = false;
             txtApeM.Enabled = false;
-            cmbDoc.Enabled = false;
+            cmbTipDoc.Enabled = false;
             txtDir.Enabled = false;
             txtTel.Enabled = false;
             txtCel.Enabled = false;
             txtCor.Enabled = false;
-            cmbTipDoc.Enabled = false;
             cmbCodDis.Enabled = false;
             chkEst.Enabled = false;
             btnRegistrar.Enabled = false;
@@ -60,12 +62,11 @@ namespace pe.com.evaluacion2.ui
             txtNom.Enabled = true;
             txtApeP.Enabled = true;
             txtApeM.Enabled = true;
-            cmbDoc.Enabled = true;
+            cmbTipDoc.Enabled = true;
             txtDir.Enabled = true;
             txtTel.Enabled = true;
             txtCel.Enabled = true;
             txtCor.Enabled = true;
-            cmbTipDoc.Enabled = true;
             cmbCodDis.Enabled = true;
             chkEst.Enabled = true;
             btnRegistrar.Enabled = true;
@@ -80,7 +81,7 @@ namespace pe.com.evaluacion2.ui
             dgvCliente.DataSource = clientes;
         }
 
-        private void btnRegistrar_Click_1(object sender, EventArgs e)
+        private void btnRegistrar_Click(object sender, EventArgs e)
         {
             // Validations
             if (string.IsNullOrWhiteSpace(txtNom.Text))
@@ -109,6 +110,8 @@ namespace pe.com.evaluacion2.ui
             obj.celular = cel;
             obj.correoElectronico = cor;
             obj.estado = est;
+            obj.distrito = new DistritoBO { codigo = Convert.ToInt32(cmbCodDis.SelectedValue) }; // Asignar el código del distrito
+            obj.TipoDocumento = new TipoDocumentoBO { codigo = Convert.ToInt32(cmbTipDoc.SelectedValue) }; // Asignar el código del tipo de documento
 
             // Execute the function
             res = bal.RegistrarCliente(obj);
@@ -160,8 +163,26 @@ namespace pe.com.evaluacion2.ui
             dgvCliente.Columns["apellidoPaterno"].DataPropertyName = "apellidoPaterno";
             dgvCliente.Columns.Add("apellidoMaterno", "Apellido Materno");
             dgvCliente.Columns["apellidoMaterno"].DataPropertyName = "apellidoMaterno";
+            dgvCliente.Columns.Add("documento", "Documento");
+            dgvCliente.Columns["documento"].DataPropertyName = "documento";
+            dgvCliente.Columns.Add("direccion", "Direccion");
+            dgvCliente.Columns["direccion"].DataPropertyName = "direccion";
+            dgvCliente.Columns.Add("telefono", "Telefono");
+            dgvCliente.Columns["telefono"].DataPropertyName = "telefono";
+            dgvCliente.Columns.Add("celular", "Celular");
+            dgvCliente.Columns["celular"].DataPropertyName = "celular";
+            dgvCliente.Columns.Add("correo", "Correo");
+            dgvCliente.Columns["correo"].DataPropertyName = "correoElectronico"; // Asegúrate de que coincida con la propiedad
             dgvCliente.Columns.Add("estado", "Estado");
             dgvCliente.Columns["estado"].DataPropertyName = "estado";
+            dgvCliente.Columns.Add("codigoDis", "Codigo Dis");
+            dgvCliente.Columns["codigoDis"].DataPropertyName = "distrito.codigo"; // Asegúrate de que coincida con la propiedad
+            dgvCliente.Columns.Add("nombreDis", "Nombre Dis");
+            dgvCliente.Columns["nombreDis"].DataPropertyName = "distrito.nombre"; // Asegúrate de que coincida con la propiedad
+
+            // Asegúrate de agregar la columna para el tipo de documento
+            dgvCliente.Columns.Add("codigoTipDoc", "Codigo Tipo Documento");
+            dgvCliente.Columns["codigoTipDoc"].DataPropertyName = "TipoDocumento.codigo"; // Asegúrate de que coincida con la propiedad
 
             dgvCliente.CellFormatting += (s, e) =>
             {
@@ -178,7 +199,6 @@ namespace pe.com.evaluacion2.ui
                 col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
-
         private void dgvCliente_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             indice = e.RowIndex;
@@ -187,15 +207,33 @@ namespace pe.com.evaluacion2.ui
                 Desbloquear();
                 btnRegistrar.Enabled = false;
                 DataGridViewRow filaSeleccionada = dgvCliente.Rows[indice];
+
                 txtCod.Text = filaSeleccionada.Cells["codigo"].Value.ToString();
                 txtNom.Text = filaSeleccionada.Cells["nombre"].Value.ToString();
                 txtApeP.Text = filaSeleccionada.Cells["apellidoPaterno"].Value.ToString();
                 txtApeM.Text = filaSeleccionada.Cells["apellidoMaterno"].Value.ToString();
+                txtDir.Text = filaSeleccionada.Cells["direccion"].Value.ToString();
+                txtTel.Text = filaSeleccionada.Cells["telefono"].Value.ToString();
+                txtCel.Text = filaSeleccionada.Cells["celular"].Value.ToString();
+                txtCor.Text = filaSeleccionada.Cells["correo"].Value.ToString();
                 chkEst.Checked = Convert.ToBoolean(filaSeleccionada.Cells["estado"].Value);
+
+                // Asignar el distrito
+                var codigoDis = filaSeleccionada.Cells["codigoDis"].Value;
+                if (codigoDis != null)
+                {
+                    cmbCodDis.SelectedValue = codigoDis;
+                }
+
+                // Asignar el tipo de documento
+                var codigoTipDoc = filaSeleccionada.Cells["codigoTipDoc"].Value; // Asegúrate de que esta columna exista
+                if (codigoTipDoc != null)
+                {
+                    cmbTipDoc.SelectedValue = codigoTipDoc;
+                }
             }
         }
-
-        private void btnActualizar_Click_1(object sender, EventArgs e)
+        private void btnActualizar_Click(object sender, EventArgs e)
         {
             cod = Convert.ToInt32(txtCod.Text);
             nom = txtNom.Text;
@@ -216,6 +254,8 @@ namespace pe.com.evaluacion2.ui
             obj.celular = cel;
             obj.correoElectronico = cor;
             obj.estado = est;
+            obj.distrito = new DistritoBO { codigo = Convert.ToInt32(cmbCodDis.SelectedValue) }; // Asignar el código del distrito
+            obj.TipoDocumento = new TipoDocumentoBO { codigo = Convert.ToInt32(cmbTipDoc.SelectedValue) }; // Asignar el código del tipo de documento
 
             res = bal.ActualizarCliente(obj);
             if (res)
@@ -233,7 +273,7 @@ namespace pe.com.evaluacion2.ui
             }
         }
 
-        private void btnEliminar_Click_1(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
             cod = Convert.ToInt32(txtCod.Text);
             obj.codigo = cod;
@@ -257,7 +297,7 @@ namespace pe.com.evaluacion2.ui
             }
         }
 
-        private void btnHabilitar_Click_1(object sender, EventArgs e)
+        private void btnHabilitar_Click(object sender, EventArgs e)
         {
             cod = Convert.ToInt32(txtCod.Text);
             obj.codigo = cod;
@@ -283,12 +323,31 @@ namespace pe.com.evaluacion2.ui
 
         private void frmCliente_Load(object sender, EventArgs e)
         {
+            // Aquí puedes cargar los datos necesarios para los combos de distrito y tipo de documento
+            CargarDistritos();
+            CargarTiposDocumento();
+        }
 
+        private void CargarDistritos()
+        {
+            // Método para cargar los distritos en cmbCodDis
+            var distritos = bal.MostrarDistrito(); // Asegúrate de que este método esté implementado
+            cmbCodDis.DataSource = distritos;
+            cmbCodDis.DisplayMember = "nombre"; // Asegúrate de que el nombre de la propiedad sea correcto
+            cmbCodDis.ValueMember = "codigo"; // Asegúrate de que el nombre de la propiedad sea correcto
+        }
+
+        private void CargarTiposDocumento()
+        {
+            // Método para cargar los tipos de documento en cmbTipDoc
+            var tiposDocumento = bal.MostrarTipoDocumento(); // Asegúrate de que este método esté implementado
+            cmbTipDoc.DataSource = tiposDocumento;
+            cmbTipDoc.DisplayMember = "nombre"; // Asegúrate de que el nombre de la propiedad sea correcto
+            cmbTipDoc.ValueMember = "codigo"; // Asegúrate de que el nombre de la propiedad sea correcto
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

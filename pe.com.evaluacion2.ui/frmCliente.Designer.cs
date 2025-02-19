@@ -71,6 +71,7 @@
             btnHabilitar.TabIndex = 82;
             btnHabilitar.Text = "Habilitar";
             btnHabilitar.UseVisualStyleBackColor = false;
+            btnHabilitar.Click += btnHabilitar_Click;
             // 
             // btnEliminar
             // 
@@ -82,6 +83,7 @@
             btnEliminar.TabIndex = 81;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnActualizar
             // 
@@ -93,6 +95,7 @@
             btnActualizar.TabIndex = 80;
             btnActualizar.Text = "Actualizar";
             btnActualizar.UseVisualStyleBackColor = false;
+            btnActualizar.Click += btnActualizar_Click;
             // 
             // btnRegistrar
             // 
@@ -104,6 +107,7 @@
             btnRegistrar.TabIndex = 79;
             btnRegistrar.Text = "Registrar";
             btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // btnNuevo
             // 
@@ -115,6 +119,7 @@
             btnNuevo.TabIndex = 78;
             btnNuevo.Text = "Nuevo";
             btnNuevo.UseVisualStyleBackColor = false;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // label7
             // 
@@ -211,8 +216,9 @@
             dgvCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCliente.Location = new Point(12, 486);
             dgvCliente.Name = "dgvCliente";
-            dgvCliente.Size = new Size(776, 310);
+            dgvCliente.Size = new Size(1031, 310);
             dgvCliente.TabIndex = 58;
+            dgvCliente.CellClick += dgvCliente_CellClick;
             // 
             // chkEst
             // 
@@ -336,7 +342,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 924);
+            ClientSize = new Size(1055, 924);
             Controls.Add(cmbTipDoc);
             Controls.Add(cmbCodDis);
             Controls.Add(btnHabilitar);

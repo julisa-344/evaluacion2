@@ -67,7 +67,7 @@ namespace pe.com.evaluacion2.dal
                     // Asignar tipo de documento
                     objTipoDocumento.codigo = Convert.ToInt32(dr["codtipd"]);
                     objTipoDocumento.nombre = dr["nomtipd"].ToString();
-                    obj.TipoDocumento = objTipoDocumento;
+                    obj.tipoDocumento = objTipoDocumento;
 
                     // Agregar el objeto a la lista
                     empleados.Add(obj);
@@ -147,7 +147,7 @@ namespace pe.com.evaluacion2.dal
                     // Asignar tipo de documento
                     objTipoDocumento.codigo = Convert.ToInt32(dr["codtipd"]);
                     objTipoDocumento.nombre = dr["nomtipd"].ToString();
-                    obj.TipoDocumento = objTipoDocumento;
+                    obj.tipoDocumento = objTipoDocumento;
 
                     // Agregar el objeto a la lista
                     empleados.Add(obj);
@@ -202,7 +202,7 @@ namespace pe.com.evaluacion2.dal
                 // Agregar parámetros para el distrito, rol y tipo de documento si los tienes
                 cmd.Parameters.AddWithValue("@coddis", p.distrito.codigo);
                 cmd.Parameters.AddWithValue("@codrol", p.rol.codigo);
-                cmd.Parameters.AddWithValue("@codtipd", p.TipoDocumento.codigo);
+                cmd.Parameters.AddWithValue("@codtipd", p.tipoDocumento.codigo);
 
                 // Ejecutar la consulta
                 int res = cmd.ExecuteNonQuery();
@@ -255,7 +255,7 @@ namespace pe.com.evaluacion2.dal
                 // Agregar parámetros para el distrito, rol y tipo de documento si es necesario
                 cmd.Parameters.AddWithValue("@coddis", p.distrito.codigo);
                 cmd.Parameters.AddWithValue("@codrol", p.rol.codigo);
-                cmd.Parameters.AddWithValue("@codtipd", p.TipoDocumento.codigo);
+                cmd.Parameters.AddWithValue("@codtipd", p.tipoDocumento.codigo);
 
                 // Ejecutar la consulta
                 int res = cmd.ExecuteNonQuery();

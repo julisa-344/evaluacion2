@@ -42,7 +42,6 @@
             dgvEmpleado = new DataGridView();
             label10 = new Label();
             txtApeM = new TextBox();
-            cmbDoc = new ComboBox();
             txtTel = new TextBox();
             label11 = new Label();
             txtCel = new TextBox();
@@ -53,17 +52,18 @@
             label14 = new Label();
             txtCla = new TextBox();
             label15 = new Label();
-            txtTipDoc = new TextBox();
             label7 = new Label();
-            txtRol = new TextBox();
             label16 = new Label();
-            txtCodDis = new TextBox();
             label17 = new Label();
             btnHabilitar = new Button();
             btnEliminar = new Button();
             btnActualizar = new Button();
             btnRegistrar = new Button();
             btnNuevo = new Button();
+            cmbDis = new ComboBox();
+            cmbRol = new ComboBox();
+            cmbTipDoc = new ComboBox();
+            txtDoc = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleado).BeginInit();
             SuspendLayout();
             // 
@@ -178,7 +178,6 @@
             dgvEmpleado.Size = new Size(559, 310);
             dgvEmpleado.TabIndex = 19;
             dgvEmpleado.CellClick += dgvEmpleado_CellClick;
-            //dgEmpleado.CellContentClick += dgvEmpleado_CellContentClick;
             // 
             // label10
             // 
@@ -195,14 +194,6 @@
             txtApeM.Name = "txtApeM";
             txtApeM.Size = new Size(100, 23);
             txtApeM.TabIndex = 23;
-            // 
-            // cmbDoc
-            // 
-            cmbDoc.FormattingEnabled = true;
-            cmbDoc.Location = new Point(171, 205);
-            cmbDoc.Name = "cmbDoc";
-            cmbDoc.Size = new Size(121, 23);
-            cmbDoc.TabIndex = 24;
             // 
             // txtTel
             // 
@@ -284,13 +275,6 @@
             label15.TabIndex = 33;
             label15.Text = "Clave";
             // 
-            // txtTipDoc
-            // 
-            txtTipDoc.Location = new Point(510, 268);
-            txtTipDoc.Name = "txtTipDoc";
-            txtTipDoc.Size = new Size(100, 23);
-            txtTipDoc.TabIndex = 40;
-            // 
             // label7
             // 
             label7.AutoSize = true;
@@ -300,13 +284,6 @@
             label7.TabIndex = 39;
             label7.Text = "Cod Tip Doc";
             // 
-            // txtRol
-            // 
-            txtRol.Location = new Point(509, 239);
-            txtRol.Name = "txtRol";
-            txtRol.Size = new Size(100, 23);
-            txtRol.TabIndex = 38;
-            // 
             // label16
             // 
             label16.AutoSize = true;
@@ -315,13 +292,6 @@
             label16.Size = new Size(49, 15);
             label16.TabIndex = 37;
             label16.Text = "Cod Rol";
-            // 
-            // txtCodDis
-            // 
-            txtCodDis.Location = new Point(509, 210);
-            txtCodDis.Name = "txtCodDis";
-            txtCodDis.Size = new Size(100, 23);
-            txtCodDis.TabIndex = 36;
             // 
             // label17
             // 
@@ -391,21 +361,53 @@
             btnNuevo.UseVisualStyleBackColor = false;
             btnNuevo.Click += btnNuevo_Click_1;
             // 
+            // cmbDis
+            // 
+            cmbDis.FormattingEnabled = true;
+            cmbDis.Location = new Point(507, 210);
+            cmbDis.Name = "cmbDis";
+            cmbDis.Size = new Size(121, 23);
+            cmbDis.TabIndex = 46;
+            // 
+            // cmbRol
+            // 
+            cmbRol.FormattingEnabled = true;
+            cmbRol.Location = new Point(508, 239);
+            cmbRol.Name = "cmbRol";
+            cmbRol.Size = new Size(121, 23);
+            cmbRol.TabIndex = 47;
+            // 
+            // cmbTipDoc
+            // 
+            cmbTipDoc.FormattingEnabled = true;
+            cmbTipDoc.Location = new Point(508, 268);
+            cmbTipDoc.Name = "cmbTipDoc";
+            cmbTipDoc.Size = new Size(121, 23);
+            cmbTipDoc.TabIndex = 48;
+            // 
+            // txtDoc
+            // 
+            txtDoc.Location = new Point(171, 205);
+            txtDoc.Name = "txtDoc";
+            txtDoc.Size = new Size(100, 23);
+            txtDoc.TabIndex = 49;
+            // 
             // frmEmpleado
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(673, 724);
+            Controls.Add(txtDoc);
+            Controls.Add(cmbTipDoc);
+            Controls.Add(cmbRol);
+            Controls.Add(cmbDis);
             Controls.Add(btnHabilitar);
             Controls.Add(btnEliminar);
             Controls.Add(btnActualizar);
             Controls.Add(btnRegistrar);
             Controls.Add(btnNuevo);
-            Controls.Add(txtTipDoc);
             Controls.Add(label7);
-            Controls.Add(txtRol);
             Controls.Add(label16);
-            Controls.Add(txtCodDis);
             Controls.Add(label17);
             Controls.Add(txtCla);
             Controls.Add(label15);
@@ -417,7 +419,6 @@
             Controls.Add(label12);
             Controls.Add(txtTel);
             Controls.Add(label11);
-            Controls.Add(cmbDoc);
             Controls.Add(txtApeM);
             Controls.Add(label10);
             Controls.Add(dgvEmpleado);
@@ -461,7 +462,6 @@
         private Label label10;
         private TextBox txtApeM;
         private TextBox textBox1;
-        private ComboBox cmbDoc;
         private TextBox txtTel;
         private Label label11;
         private TextBox txtCel;
@@ -472,16 +472,17 @@
         private Label label14;
         private TextBox txtCla;
         private Label label15;
-        private TextBox txtTipDoc;
         private Label label7;
-        private TextBox txtRol;
         private Label label16;
-        private TextBox txtCodDis;
         private Label label17;
         private Button btnHabilitar;
         private Button btnEliminar;
         private Button btnActualizar;
         private Button btnRegistrar;
         private Button btnNuevo;
+        private ComboBox cmbDis;
+        private ComboBox cmbRol;
+        private ComboBox cmbTipDoc;
+        private TextBox txtDoc;
     }
 }

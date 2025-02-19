@@ -32,6 +32,7 @@ namespace pe.com.evaluacion2.dal
 
                 // Ejecutar el reader
                 dr = cmd.ExecuteReader();
+                System.Diagnostics.Debug.WriteLine("Records returned: " + dr.HasRows);
 
                 while (dr.Read())
                 {
@@ -41,16 +42,16 @@ namespace pe.com.evaluacion2.dal
                     TipoDocumentoBO objTipoDocumento = new TipoDocumentoBO();
 
                     // Asignar propiedades del Cliente
-                    obj.codigo = Convert.ToInt32(dr["codemp"]);
-                    obj.nombre = dr["nomemp"].ToString();
-                    obj.apellidoPaterno = dr["apepemp"].ToString();
-                    obj.apellidoMaterno = dr["apememp"].ToString();
-                    obj.documento = dr["docemp"].ToString();
-                    obj.direccion = dr["diremp"].ToString();
-                    obj.telefono = dr["telemp"].ToString();
-                    obj.celular = dr["celemp"].ToString();
-                    obj.correoElectronico = dr["coremp"].ToString();
-                    obj.estado = Convert.ToBoolean(dr["estemp"]);
+                    obj.codigo = Convert.ToInt32(dr["codcli"]);
+                    obj.nombre = dr["nomcli"].ToString();
+                    obj.apellidoPaterno = dr["apepcli"].ToString();
+                    obj.apellidoMaterno = dr["apemcli"].ToString();
+                    obj.documento = dr["doccli"].ToString();
+                    obj.direccion = dr["dircli"].ToString();
+                    obj.telefono = dr["telcli"].ToString();
+                    obj.celular = dr["celcli"].ToString();
+                    obj.correoElectronico = dr["corcli"].ToString();
+                    obj.estado = Convert.ToBoolean(dr["estcli"]);
 
                     // Asignar distrito
                     objDistrito.codigo = Convert.ToInt32(dr["coddis"]);
@@ -71,7 +72,8 @@ namespace pe.com.evaluacion2.dal
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
                 return null;
             }
             finally
@@ -102,9 +104,11 @@ namespace pe.com.evaluacion2.dal
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "SP_MostrarClienteTodo";
                 cmd.Connection = objconexion.Conectar();
+                System.Diagnostics.Debug.WriteLine("exito");
 
                 // Ejecutar el reader
                 dr = cmd.ExecuteReader();
+                System.Diagnostics.Debug.WriteLine("perro");
 
                 while (dr.Read())
                 {
@@ -112,28 +116,32 @@ namespace pe.com.evaluacion2.dal
                     DistritoBO objDistrito = new DistritoBO();
                     RolBO objRol = new RolBO();
                     TipoDocumentoBO objTipoDocumento = new TipoDocumentoBO();
+                    System.Diagnostics.Debug.WriteLine("perro 3");
 
                     // Asignar propiedades del Cliente
-                    obj.codigo = Convert.ToInt32(dr["codemp"]);
-                    obj.nombre = dr["nomemp"].ToString();
-                    obj.apellidoPaterno = dr["apepemp"].ToString();
-                    obj.apellidoMaterno = dr["apememp"].ToString();
-                    obj.documento = dr["docemp"].ToString();
-                    obj.direccion = dr["diremp"].ToString();
-                    obj.telefono = dr["telemp"].ToString();
-                    obj.celular = dr["celemp"].ToString();
-                    obj.correoElectronico = dr["coremp"].ToString();
-                    obj.estado = Convert.ToBoolean(dr["estemp"]);
+                    obj.codigo = Convert.ToInt32(dr["codcli"]);
+                    obj.nombre = dr["nomcli"].ToString();
+                    obj.apellidoPaterno = dr["apepcli"].ToString();
+                    obj.apellidoMaterno = dr["apemcli"].ToString();
+                    obj.documento = dr["doccli"].ToString();
+                    obj.direccion = dr["dircli"].ToString();
+                    obj.telefono = dr["telcli"].ToString();
+                    obj.celular = dr["celcli"].ToString();
+                    obj.correoElectronico = dr["corcli"].ToString();
+                    obj.estado = Convert.ToBoolean(dr["estcli"]);
+                    System.Diagnostics.Debug.WriteLine("perro 4");
 
                     // Asignar distrito
                     objDistrito.codigo = Convert.ToInt32(dr["coddis"]);
                     objDistrito.nombre = dr["nomdis"].ToString(); // Asegúrate que estos campos existen
                     obj.distrito = objDistrito;
+                    System.Diagnostics.Debug.WriteLine("perro 5");
 
                     // Asignar tipo de documento
                     objTipoDocumento.codigo = Convert.ToInt32(dr["codtipd"]);
                     objTipoDocumento.nombre = dr["nomtipd"].ToString();
                     obj.TipoDocumento = objTipoDocumento;
+                    System.Diagnostics.Debug.WriteLine("perro 6");
 
                     // Agregar el objeto a la lista
                     clientes.Add(obj);

@@ -51,6 +51,8 @@
             dgvDistrito.Name = "dgvDistrito";
             dgvDistrito.Size = new Size(427, 272);
             dgvDistrito.TabIndex = 51;
+            dgvDistrito.CellClick += dgvDistrito_CellClick;
+
             // 
             // btnHabilitar
             // 

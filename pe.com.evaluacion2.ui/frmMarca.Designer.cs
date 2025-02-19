@@ -51,6 +51,8 @@
             dgvMarca.Name = "dgvMarca";
             dgvMarca.Size = new Size(427, 272);
             dgvMarca.TabIndex = 38;
+            dgvMarca.CellClick += dgvMarca_CellClick;
+
             // 
             // btnHabilitar
             // 

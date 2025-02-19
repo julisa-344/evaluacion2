@@ -53,7 +53,6 @@
             label1.Size = new Size(286, 21);
             label1.TabIndex = 0;
             label1.Text = "Mantenimiento de Tipo de Documento";
-            //label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -63,7 +62,6 @@
             label2.Size = new Size(46, 15);
             label2.TabIndex = 1;
             label2.Text = "Codigo";
-            //label2.Click += label2_Click;
             // 
             // label3
             // 
@@ -83,7 +81,7 @@
             label4.TabIndex = 3;
             label4.Text = "Estado";
             // 
-            // textBox1
+            // txtNom
             // 
             txtNom.Location = new Point(129, 81);
             txtNom.Name = "txtNom";
@@ -114,6 +112,7 @@
             dgvTipoDocumento.Name = "dgvTipoDocumento";
             dgvTipoDocumento.Size = new Size(438, 206);
             dgvTipoDocumento.TabIndex = 7;
+            dgvTipoDocumento.CellClick += dgvTipoDocumento_CellClick;
             // 
             // btnHabilitar
             // 
@@ -124,7 +123,7 @@
             btnHabilitar.TabIndex = 16;
             btnHabilitar.Text = "Habilitar";
             btnHabilitar.UseVisualStyleBackColor = false;
-            //btnHabilitar.Click += btnHabilitar_Click;
+            btnHabilitar.Click += btnHabilitar_Click;
             // 
             // btnEliminar
             // 
@@ -136,6 +135,7 @@
             btnEliminar.TabIndex = 15;
             btnEliminar.Text = "Eliminar";
             btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnActualizar
             // 
@@ -147,6 +147,7 @@
             btnActualizar.TabIndex = 14;
             btnActualizar.Text = "Actualizar";
             btnActualizar.UseVisualStyleBackColor = false;
+            btnActualizar.Click += btnActualizar_Click_1;
             // 
             // btnRegistrar
             // 
@@ -158,6 +159,7 @@
             btnRegistrar.TabIndex = 13;
             btnRegistrar.Text = "Registrar";
             btnRegistrar.UseVisualStyleBackColor = false;
+            btnRegistrar.Click += btnRegistrar_Click_2;
             // 
             // btnNuevo
             // 
@@ -169,6 +171,7 @@
             btnNuevo.TabIndex = 12;
             btnNuevo.Text = "Nuevo";
             btnNuevo.UseVisualStyleBackColor = false;
+            btnNuevo.Click += btnNuevo_Click_1;
             // 
             // frmTipoDocumento
             // 

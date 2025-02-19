@@ -216,6 +216,7 @@
             btnRegistrar.TabIndex = 18;
             btnRegistrar.Text = "Registrar";
             btnRegistrar.UseVisualStyleBackColor = true;
+            btnRegistrar.Click += btnRegistrar_Click;
             // 
             // btnActualizar
             // 
@@ -225,6 +226,7 @@
             btnActualizar.TabIndex = 19;
             btnActualizar.Text = "Actalizar";
             btnActualizar.UseVisualStyleBackColor = true;
+            btnActualizar.Click += btnActualizar_Click;
             // 
             // btnEliminar
             // 
@@ -242,6 +244,8 @@
             dgvProducto.Name = "dgvProducto";
             dgvProducto.Size = new Size(466, 310);
             dgvProducto.TabIndex = 21;
+            dgvProducto.CellClick += dgvProducto_CellClick;
+
             // 
             // btnHabilitar
             // 

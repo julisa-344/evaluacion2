@@ -37,7 +37,7 @@ namespace pe.com.evaluacion2.ui
             PersonalizarDataGridView();
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
+        private void btnNuevo_Click_1(object sender, EventArgs e)
         {
             //llamamos al procedimiento pára desbloquear
             Desbloquear();
@@ -80,7 +80,7 @@ namespace pe.com.evaluacion2.ui
             //MessageBox.Show(TipoDocumentos.Count() + "");
         }
 
-        private void btnRegistrar_Click(object sender, EventArgs e)
+        private void btnRegistrar_Click_2(object sender, EventArgs e)
         {
             //validaciones
             if (txtNom.Text == "")
@@ -139,33 +139,6 @@ namespace pe.com.evaluacion2.ui
             txtCod.ReadOnly = true;
         }
 
-        //private void PersonalizarDataGridView()
-        //{
-        //    //ajustar el tamaño de ls columnas
-        //    dgvTipoDocumento.AutoSizeColumnsMode= DataGridViewAutoSizeColumnsMode.AllCells;
-        //    //ajustar el ancho para llenar el Datagridview
-        //    dgvTipoDocumento.AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill;
-        //    //evitar que se autogenera las columnas
-        //    dgvTipoDocumento.AutoGenerateColumns = false;
-
-        //    //asignando titulos a la columna
-        //    if (dgvTipoDocumento.Columns.Contains("codigo")) dgvTipoDocumento.Columns["codigo"].HeaderText = "Codigo";
-        //    if (dgvTipoDocumento.Columns.Contains("nombre")) dgvTipoDocumento.Columns["nombre"].HeaderText = "Nombre";
-        //    if (dgvTipoDocumento.Columns.Contains("estado")) dgvTipoDocumento.Columns["estado"].HeaderText = "Estado";
-
-        //    //centrar el texto
-        //    foreach(DataGridViewColumn col in dgvTipoDocumento.Columns)
-        //    {
-        //        col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //        col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //    }
-
-        //    //eliminamos la seleccion al iniciar
-        //    dgvTipoDocumento.ClearSelection();
-
-        //    //hacemos de solo lectura el datagridview
-        //    dgvTipoDocumento.ReadOnly = true;
-        //}
 
         private void PersonalizarDataGridView()
         {
@@ -248,7 +221,7 @@ namespace pe.com.evaluacion2.ui
             }
         }
 
-        private void btnActualizar_Click(object sender, EventArgs e)
+        private void btnActualizar_Click_1(object sender, EventArgs e)
         {
             //capturando valores
             cod = Convert.ToInt32(txtCod.Text);
@@ -285,7 +258,7 @@ namespace pe.com.evaluacion2.ui
             }
         }
 
-        private void btnEliminar_Click_1(object sender, EventArgs e)
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
             //capturando valores
             cod = Convert.ToInt32(txtCod.Text);
@@ -317,7 +290,7 @@ namespace pe.com.evaluacion2.ui
 
         }
 
-        private void btnHabilitar_Click_1(object sender, EventArgs e)
+        private void btnHabilitar_Click(object sender, EventArgs e)
         {
             //capturando valores
             cod = Convert.ToInt32(txtCod.Text);
@@ -397,6 +370,5 @@ namespace pe.com.evaluacion2.ui
 
             }
         }
-
     }
 }
